@@ -1,0 +1,94 @@
+OK, OK. We are on. Steve, are you there? I think you're muted.
+
+Yes. So it's. Yeah, my bad. That's ohhh. Alright, so visual history analysis of the NBA final project. Let's start. Let's go with the abstracts. Ohh, let's see. OK. Is the objective still temporal visualization.
+
+Yeah. Yeah, it's still the same that's OK.
+
+OK, perfect. And what about the keywords?
+
+So keywords we have only these four, I think. I think we should add more specific visualizations into the keyword, so let's add dendrogram, animated bubbles, animated lines. Umm bars and lines as well, OK.
+
+Sounds good. Let's go with that and ummm. So now let's move on to the introduction. Tell me a little bit about it.
+
+OK, so let's go paragraph by paragraph. I think this first one it's OK. I think these are the correct references that we are using ohm. This date is correct. OK, I think I think that that is good 3 point revolution. Umm. OK, ohm. Yeah, I'll double check that. But I think that that is fine as well. This ohh dupree. OK, I think I think this second one is also OK, Les jump into this last one. Uh, OK, there is something that we should be able to change here, right? So I think this wording is is a little bit off where it says that the truth is that there is that it is very hard to compare players who played in different areas and different positions. I think we can do a little bit better here, so I will change this last paragraph and these wording to say something around, you know, comparison between errors require a deeper analytics into the change of rules and players positions.
+OK. I think. I think that makes more sense.
+
+Uh, right? Yeah. OK, let's let's go with that wording. Making sure that this well now it looks more like a comparison between eras require a deeper analytics into the change of rules and players. Yeah, sounds good.
+
+OK, I think I think that's introduction, yeah.
+
+Alright now this the next is OK. background.
+
+OK, background OK. This first paragraph from looks OK to me. Yeah, this hasn't changed. Second paragraph and traditional positions although well known. have never been strictly defined, nor, enforced. This is true, although not everyone might know the traditional positions. So here let's add the five traditional positions, Steve. So that will be center, point guard, shooting guard, small forward and forward.
+
+Uh, yeah, that that will help a lot.
+
+OK.
+
+And where should we add those?
+
+I think you just after it says yeah, and background, second paragraph. Just after says umm The well known, well known positions. Well known. Yeah, you can maybe at the parentheses or something like that you can figure it out. OK.
+
+
+Perfect. So we will add those five traditional positions there sounds good and now the next part will be I think yes approach.
+
+OK. Yeah, approach section. Yeah, this is this small section. Yeah, this is this is OK. This is still the same. Umm.
+
+Sounds perfect and now datasets.
+
+Yeah, datasets. We did have a change here, a big change. We are not using anymore the basketball reference data set. So what we should do to Steve is in all the document in All in all the the the paper we should add change. Sorry, we should change where it says back basketball reference to ESPN Analytics, OK.
+
+Ohhh. Alright, sounds good. Let's go with that change. Make sure to put the ESPN analytics instead.
+
+Yeah. Yeah. Let's let's go with that. Other than that, let me let me Scroll down this first table. Ohh, I think there's a change here too, since we change data sets. There is no offensive rebounds or defensive rebounds, so we should delete these two and add one. That says just total rebounds, OK.
+
+Perfect. Let's do that addition to that section.
+
+Yeah. So that table one, table two. Yeah, this one is still the same thing. Yeah, there is no change there, OK.
+
+Perfect. Alright, now how about a section 3.3?
+
+3.2, I think it's 3.2 first.
+
+Oh yeah, you're right. Tell me a little bit about that one.
+
+OK, 3.2 first, OK 3 point evolution per position. OK, in this section. I think I would add a paragraph. OK, let me let me see where.
+
+Where was that? OK, this chart is OK. Uh, this wording is is fine. This is what matters. Umm, this cluster names are still relevant. Here are here we are saying that we're gonna use these two algorithms. SARIMAX and AIC, and we should spend maybe a paragraph explaining what these two algorithms are. OK, so add a paragraph here at the end of the section and explaining what SARIMAX and AIC is OK.
+
+Perfect. We'll make that definition to the paragraph, so it helps out. Perfect.
+Ohh. and, let's move now to section. Now section 3.3.
+
+Sure. Yeah. OK. So this is the LeBron versus Michael umm inlet analysis. OK, here we are good with the this assessment and I think there is something maybe we can change here Steve and that is. Umm, explain why the 1st the 1st 15 seasons here at the end of the first paragraph we could add a sentence that says something around that we only choose this 15 seasons because that's the amount of seasons that Michael Jordan played, OK.
+
+All right. OK, so in the first paragraph in section 3.3. We will explain that we use 15 season because that is ammount of season that Michael played. OK, perfect. Sounds good.
+
+Yeah, that is correct. OK. Results.
+
+Right moving section results perfect. OK.
+
+Yeah, Section 4 and four one. OK, Section 4.1, I think this is fine. This is just a link to the animation would change there. UM now to section 4.2 is there is other one. This is the Michael Jordan visualization again. We have the same. Two Visualization, I think I think I'm seeing here a lot of PER mentions, OK, yeah. So let's let's modify this. So here where it says PER. Let's change it to player efficiency rating and then in parentheses PER OK.
+
+OK. We'll make that change sound good. Perfect.
+
+Yeah. And so we go back. We OK, we go down offensive box plus minus. That's correct. Overall box plus minus that is correct umm. So here I think this is an uh, a typo error. Uh, it says BMP. It should be BPM box plus, minus and 
+
+Oh, gotcha.
+
+ and we should also add the full word like box plus, minus and then parenthesis BPM.
+
+ Alright we will make the proper updates to that.
+
+And then finally conclusions. Oh, OK, I think this is. I think this is all fine and there is no. this conclusion are still the same. Yeah, no changes to the conclusion.
+
+Perfect. Ohh sounds good. OK, Steve, thank you for your time. I mean, I wouldn't.
+
+No, thank you and let me know if there are any extra updates.
+
+OK. Thank you.
+
+
+
+
+
+

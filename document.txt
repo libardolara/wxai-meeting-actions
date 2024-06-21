@@ -1,0 +1,112 @@
+Visual Historical Analysis of the NBA:
+Final Project
+Abstract
+This document describes the implementation of several temporal visualizations to analyze time-sensitive data from the NBA. It contains a description of the machine learning models implemented to analyze the data and prepare it for the visual analysis. In particular it covers the implementation of a clustering algorithm and a time series applied to the produced clusters.
+
+Keywords: neural clustering, time series, visualizations, NBA.
+
+1	Introduction 
+The game of basketball was first invented in 1891 in Springfield, Massachusetts in a small college, fast forward to today is a global game with more than 200 countries with national teams (McCuaig, 2016). The National Basketball Association (NBA) is the most popular basketball league, with more than 400 players and a 10 billion revenue in 2022 (Ozanian & Teitelbaum, 2022). The history of the NBA started in 1949 when the Basketball Association of America (BAA) and the National Basketball League (NBL) merged into one single league (History.com Editors, 2022). Since then, not only the teams and league has evolved but also how the game is played. It is common to refer to the eras of the NBA, the dominance of the big men, and currently the 3-point evolution.
+The 3-point line was introduced in 1979 as a response to the dominance of big men around the hoop, clogging the painted area and making the pace of the game slow and unattracted to some (DuPree, 1979). The main idea was to space the player around the court to allow for better tactical styles. Grating an extra point compared to any other field goal, the idea was to entice players to take more 3-points to gain the extra point. The height or the position of the player now doesn’t play as big as a factor in the ability to score.
+Besides the eras in the NBA, the history of the league can’t be written without its stars. Arguably the two biggest stars in modern history are Michael Jordan and Lebron James. Their curriculum is well-known by every fan of the NBA, often posting the question: who is the greatest of all time? Although the question is interesting to spark debates, the truth is that it is very hard to compare players who played in different eras and different positions. Basketball is a team game, having contributions from starters and bench players. The second objective of this paper is to present a comparison of Michael Jordan's and Lebron James' careers in terms of the contribution of their teams, trying to answer, who had more help.
+
+2	Background
+The purpose of this project is to analyze historical data on the NBA, proposing visualization and machine learning techniques to analyze data that has latent variables related to the game. This latent variable refers to intangibles that cannot be measured like style, rules, and the evolution of the game from season to season. The first analysis is focused on the 3-point revolution effects on the roles and positions of basketball from the 1979-198 season to the 2021-2022 season and beyond. The second analysis focuses on comparing the career and team performance of two superstars playing in two different eras: Michael Jordan from 1984 to 2003 and LeBron James from 2004 to 2018. Both analyses pose similar challenges in having temporal data, statistics, and relative comparisons.
+
+Analyzing the player's performance per position poses several difficulties. The traditional positions although well-known have never been strictly defined nor enforced. For instance, a center may be known to play close to the basket and to rebound and score, it is not enforced that a player listed as a center cannot break that model. This is more prevalent as for the last two decades players have been more skilled and can play differently. In addition, teams can list their players without any control or consistency. In fact, many players are listed differently from season to season. For example, LeBron James has been listed as both a point guard and a small forward while Stephen Curry was classified as a point guard for the first three seasons, then listed as a shooting guard.
+
+There are several works done to address the role or position of a player in the NBA using statistics. One approach is to use the regular statistics used in the box score to measure players to create clusters, however, since the analysis in this project is temporal a decision must be made to create clusters per season, or one single mega-cluster as proposed by Hedquist (Hedquist, 2022). Clustering is an unsupervised machine-learning technique used to find patterns in the data and classify them. There are hierarchical and non-hierarchical models that can be used, each with advantages and disadvantages to this project. 
+
+On the other hand, there is a myriad of comparisons between Michael Jordan versus LeBron James, most of them focus on single-point statistics to summarize their entire career. This could be simple statistics like average points per game, or advanced statistics like field goal percentage in winning shots. These statistics are not doing service to the complexity of the game, the situations each faced, the teammates, or the opponents. Although these statistics are useful for this project analysis, the purpose is to create a side-by-side comparison of their career and their teammates. This is achieved using a temporal visualization of advanced statistics while making a distinction between the superstar and their teammates.
+
+3	Approach
+Section 3.1 presents a description of the datasets used for this project. Section 3.2 and 3.3 describes the data preprocessing and machine learning techniques applied to the datasets to achieve the desired visualizations.
+
+3.1	Datasets
+This project uses data from the 1979-1980 season to the 2021-2022 season from Basketball-Reference. Three datasets were used, the player's season totals, the player's advanced season totals, and the NBA league index.
+
+Table 1 describes the features used from the player's season totals dataset from Basketball-Reference. Although there are more features, these were not included as they did not provide information relevant to the analysis done in this project.
+
+Column	Description
+name	Player’s name
+positions	Player Position
+games_played	Games Played in the season
+FG	Field Goals made
+FGA	Field Goals attempts
+3P	3-Points made
+3PA	3-points attempts
+FT	Free Throws made
+FTA	Free Throws attempts
+ORB	Offensive Rebounds
+DRB	Defensive Rebounds
+AST	Assists
+STL	Steals
+BLK	Blocks
+TOV	Turnovers
+PF	Personal Fouls
+PTS	Points
+season	Year season ended
+Table 1. The player's season totals dataset.
+
+Table 2 describes the features used from the player's advanced season totals dataset from Basketball-Reference. Although there are more features, these were not included as they did not provide information relevant to the analysis done in this project.
+
+Column	Description
+name	Player’s name
+PER	Player Efficiency Rating: A measure of per-minute production standardized such that the league average is 15.
+OBPM	Offensive Box Plus/Minus:  box score estimate of the offensive points per 100 possessions a player contributed above a league-average player, translated to an average team.
+DBPM	Defensive Box Plus/Minus: A box score estimate of the defensive points per 100 possessions a player contributed above a league-average player, translated to an average team.
+BPM	Box Plus/Minus: A box score estimate of the points per 100 possessions a player contributed above a league-average player, translated to an average team.
+season	Year season ended
+Table 2. The player's advanced season totals dataset.
+
+Finally, the NBA league index dataset was used only to cross-reference the championship winners for each season.
+
+3.2	3-Point evolution per Position.
+The first step in the pipeline implemented was to transform the player's season totals to per-game statistics to normalize each player's production to the games he played. Additionally, since players can be traded between a season, those would have several inputs in the dataset within a season. An aggregation of these players' statistics was done to add up their performance in a season to have a single input per player per season. This proposed dataset is then used for the first analysis of the 3-point impact in the positions.
+
+The second step is to define a consistent position in the NBA. As discussed in Section 2, clustering presents an alternative to classify players according to their production on the court. A hierarchical clustering algorithm was chosen due to its ability to consider outliers without skewing the clusters. To apply these models, the number of clusters must be determined, to do so a dendrogram can be used. Figure 1 shows the dendrogram for all the players from 1979 to 2022.
+
+The obvious option would be to use 5 clusters, however, upon testing this configuration produced cluster describing primarily the role of bench, star, or superstar. Since the idea is to have a cluster that also describes the way of contributing, 9 clusters were chosen just as Hedquist proposed. The algorithm used was a Ward, an agglomerative hierarchical clustering used as a mega-cluster for all seasons. Figure 2 shows the cluster's percentile per each of the statistics used for the 2021-2022 season.
+
+A descriptive name was given for each cluster using both Figure 2 and the prominent players in each cluster for the 2021-2022 season. Table 3 shows the names assigned and the prominent players per cluster in the 2021-2022 season.
+
+Id	Cluster Name	Prominent Players
+0	Score First	Carmelo Anthony, Andrew Wiggins, Bogdan Bogdanović
+1	Superstars	LeBron James, Stephen Curry, Giannis Antetokounmpo, Joel Embiid
+2	Two-way players	Alex Caruso, Patrick Beverle
+3	Defensive Big Men	Steven Adams, Dwight Howard, JaVale McGee
+4	Bench Role Players	Thanasis Antetokounmpo, Santi Aldama
+5	Interior Big Men	LaMarcus Aldridge, Rudy Gobert, Deandre Ayton
+6	Deep Bench	Bol Bol, Moses Wright
+7	Scoring Big Men	Bam Adebayo, Evan Mobley, Jusuf Nurkić
+8	Bench Perimeter Scorers	Lou Williams, Avery Bradley, Trevor Ariza
+Table 3. Cluster naming and prominent players.
+
+To predict the trend and forecast the 3-point evolution in the upcoming seasons the time series algorithm SARIMAX was implemented. This algorithm can handle both seasonal and non-seasonal data. The parameters and seasonal parameters for this model were chosen per cluster performing a grid search minimizing the Akaike information criteria (AIC). 
+
+3.3	Michael Jordan vs LeBron James Career and Teams.
+To produce this visual analysis the Players advanced totals dataset was preprocessed to filter only Michael’s and LeBron’s teams. Both superstars were subtracted from their teams, to have a clear comparison on how much their teams were dependent on them to thrive. It's worth noting that this analysis was limited to the top 6 teammates with the most minutes played per season. This was done to avoid skewing the statistics with bench players since there are more bench players in the NBA now than when Michael played. It is also true that in playoffs the rotation of players tends to close on 6 to 9 players depending on the coach. To be able to compare their career, this analysis focuses only on the first 15 seasons of each player.
+
+The advanced statistics are useful to sum up the player's impact on the team in one aspect of the game. For example, the Player Efficiency Rating (PER) “sums up all a player's positive accomplishments, subtracts the negative accomplishments, and returns a per-minute rating of a player's performance." According to its creator John Hollinger (Basketball Reference, 2022). These statistics are adjusted around a league average, giving a direct indication of whether the players are above or below the average for each season. This allows us to compare the teams across different eras, having as a base their own contemporary players.
+
+4	Results
+The results show visualizations proposed as models to compare temporal data in different analyses for the NBA.
+
+4.1	3-Point evolution per Position.
+Figure 3 shows the first visualization proposed is an animated bubble graph on a cartesian plane. The x-axis is depicting the 3-point made while the y-axis depicts the 3-point attempted. In addition, the size of the bubble reflects the number of players in each position. As time advances the bubbles move along the plane and increase/decrease in size as the positions evolve. The purpose of this visualization is to allow the data to tell a visual story of the evolution of these clusters. This should serve as an exploratory visualization to move into a more specialized visualization.
+
+The user can hover over the visualization to gain exact information about the cluster. In addition, the slider below the graph can be used to control de animation, pause, resume, and move to a specific year of interest. The labels on the right are also interactive, as they serve as a filter to activate/deactivate series in the visualization.
+Figure 4 shows the second type of visualization proposed for this analysis, an animated line graph with a forecast of the expected evolution of the 3-point made in the next 10 years. The purpose of this visualization is to provide a specialized view of the evolution of the 3-point per cluster position as well as to provide an estimate of the projections for the next 10 years.
+
+The user can hover over the lines to get a unified detail of the exact values of all cluster positions for a specific season. In addition, the range slider below the graph allows to zoom into a specific timeframe of interest.
+
+4.2	Michael Jordan vs LeBron James Career and Teams.
+Figure 5 shows the visualization type proposed for this analysis applied to the PER statistic. This visualization is a column chart combined with a line graph, the columns are used for the teammates while the line is used for the superstars. In addition, markers can be used to mark relevant events in their careers, for instance, the championships are coded as stars over the line graphs. A deactivated series per superstar is added to provide an exact depiction of the difference between the PER of the superstar and the average PER of his teammates. The user can activate/deactivate any series by clicking on the label's name.
+
+The user can hover over the elements to get detailed information, for example, the columns provide extra information on the name of the team, the year of the season, and the exact PER value. positions for a specific season. It can be noted that the 1995-1997 Bulls teams had a high efficiency, while only the 2015 Cavalier had a comparable high efficiency. Figure 6 shows the same type of visualization used to analyze the Defensive box plus minus.
+
+It is evident that the 1995-1998 Bulls were great defensive teams, and that Michael relied on them on the defensive side for the second three-peat. On the other hand, LeBron had several good defensive teams, although he was far and beyond the average of his teammates being a solid defensive contributor for all his championships. Figure 7 shows the performance of the superstars and their teams using the Offensive box plus minus.
+
+Figure 7 shows that both superstars were solid offensive contributors to their teams. It can be argued that Michael had the better offensive teammates, from 1995 to 1997. LeBron’s best offensive teammates were those Cavaliers from 2015 to 2017. Figure 8 shows the same type of visualization used to analyze the overall Box plus-minus.
+
+Overall, Michael had the best teammates according to the league’s BMP. Michael was still a strong contributor on his second three-peat, however, his impact was diminishing toward the end of his career, while LeBron’s impact remained high at the end of his first 15 years.
